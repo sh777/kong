@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - name: Checkout Kong source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
       # Fetch all history for all tags and branches
       with:
         fetch-depth: 0
@@ -125,7 +125,7 @@ jobs:
         bin/busted -o gtest spec/04-perf/99-teardown/
 
     - name: Save results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2  # v2
       with:
         name: rps-and-latency
         path: |
@@ -133,7 +133,7 @@ jobs:
         retention-days: 31
 
     - name: Save flamegrpahs
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2  # v2
       with:
         name: flamegraphs
         path: |
@@ -141,7 +141,7 @@ jobs:
         retention-days: 31
 
     - name: Save error logs
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2  # v2
       with:
         name: error_logs
         path: |
@@ -170,7 +170,7 @@ jobs:
       if: |
         github.event_name == 'pull_request' ||
         (github.event_name == 'issue_comment' && github.event.issue.pull_request)
-      uses: actions-ecosystem/action-create-comment@v1
+      uses: actions-ecosystem/action-create-comment@e23bc59fbff7aac7f9044bd66c2dc0fe1286f80b  # v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         body: |
