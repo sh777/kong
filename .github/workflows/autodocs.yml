@@ -28,10 +28,10 @@ jobs:
           echo "LD_LIBRARY_PATH=$INSTALL_ROOT/openssl/lib:$LD_LIBRARY_PATH" >> $GITHUB_ENV
 
       - name: Checkout Kong source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
 
       - name: Lookup build cache
-        uses: actions/cache@v2
+        uses: actions/cache@8492260343ad570701412c2f464a5877dc76bace  # v2
         id: cache-deps
         with:
           path: ${{ env.INSTALL_ROOT }}
@@ -39,7 +39,7 @@ jobs:
 
       - name: Checkout kong-build-tools
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
         with:
           repository: Kong/kong-build-tools
           path: kong-build-tools
@@ -47,7 +47,7 @@ jobs:
 
       - name: Checkout go-pluginserver
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
         with:
           repository: Kong/go-pluginserver
           path: go-pluginserver
@@ -76,13 +76,13 @@ jobs:
           echo "LD_LIBRARY_PATH=$INSTALL_ROOT/openssl/lib:$LD_LIBRARY_PATH" >> $GITHUB_ENV
 
       - name: Checkout Kong source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
         with:
           path: kong
           ref: ${{ github.event.inputs.source_branch }}
 
       - name: Checkout Kong Docs
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5  # v2
         with:
           repository: kong/docs.konghq.com
           path: docs.konghq.com
@@ -90,7 +90,7 @@ jobs:
           ref: ${{ github.event.inputs.target_branch }}
 
       - name: Lookup build cache
-        uses: actions/cache@v2
+        uses: actions/cache@8492260343ad570701412c2f464a5877dc76bace  # v2
         id: cache-deps
         with:
           path: ${{ env.INSTALL_ROOT }}
@@ -119,7 +119,7 @@ jobs:
           git checkout -b "autodocs-${{ steps.kong-branch.outputs.name }}"
 
       - name: Commit autodoc changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a  # v4
         with:
           repository: "./docs.konghq.com"
           commit_message: "Autodocs update"
